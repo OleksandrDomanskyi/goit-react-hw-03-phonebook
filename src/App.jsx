@@ -102,7 +102,7 @@ class App extends Component {
     };
 
     render() {
-        const { filter, } = this.state;
+        const { filter } = this.state;
         const { addContact, deleteContact, changeFilter } = this;
 
         const contacts = this.getFilteredContacts();
