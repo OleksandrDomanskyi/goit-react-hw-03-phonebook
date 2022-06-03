@@ -17,7 +17,27 @@ class App extends Component {
             {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
         ],
         filter: '',
-    }
+  }
+    
+    componentDidMount() {
+        const data = localStorage.getItem('contacts');
+        const contacts = JSON.parse(data);
+
+        if (contacts && contacts.length) {
+            this.setState({
+                contacts: contacts
+            })
+        }
+    };
+
+    componentDidUpdate(prevProps, prevState) {
+        const { contacts } = this.state;
+
+        if (prevState.contact !== contacts) {
+            const contactsUpdate = JSON.stringify(contacts);
+            localStorage.setItem('contacts', contactsUpdate);
+        }
+    };
 
     addContact = (data) => {
 
